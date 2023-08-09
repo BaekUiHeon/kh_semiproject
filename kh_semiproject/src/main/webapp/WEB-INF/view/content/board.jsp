@@ -195,7 +195,6 @@
           	        }
           	        row.appendTo(table);
           	    });
-          	
           	    $("table").replaceWith(table);
           	}   	 
           	

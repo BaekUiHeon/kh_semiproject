@@ -61,8 +61,9 @@
         font-weight: bold;
         color: black;
     }
-    .logout{
+    .logout input{
         position: absolute;
+        font-weight: bold;
         bottom: 250px;
         left: 470px;
         width: 80px;
@@ -86,9 +87,11 @@
     </div>
     </c:if>
     <c:if test="${not empty mid}">
-      <div class="logout">
-        <a href="<%=request.getContextPath()%>/main?logout=1">로그아웃</a>
+    <form action="<%=request.getContextPath()%>/logout" method="post">
+    <div class="logout">
+        <input type="submit" value="로그아웃">
     </div>
+    </form>
     </c:if>
     <div class="footer">
         <p>copyright (c) 백의헌 게시판만들기</p>

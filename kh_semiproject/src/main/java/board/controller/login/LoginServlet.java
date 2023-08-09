@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/list"); //로그인상태라면 게시목록으로 바로보냄. 
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -150,7 +150,14 @@
     		</table>
                <div class="paging">
                 <c:if test="${startPageNum!=1}">  <%--페이징 이전,번호,다음에 대한 코드 --%>
+                <c:choose>
+                <c:when test="${not empty searchWord}">
                 	<a href="<%=request.getContextPath()%>/list?currentPageNum=${startPageNum-1}&searchWord=${searchWord}">이전</a>
+                </c:when>
+                <c:otherwise>
+                	<a href="<%=request.getContextPath()%>/list?currentPageNum=${startPageNum-1}">이전</a>
+                </c:otherwise>
+                </c:choose>
                 </c:if>
                 <c:choose>
                 <c:when test="${not empty searchWord }">
@@ -165,7 +172,14 @@
                 </c:otherwise>
                 </c:choose>
                 <c:if test="${endPageNum<totalPageNum}">
-                	<a href="<%=request.getContextPath()%>/list?currentPageNum=${endPageNum+1}&searchWord=${searchWord}">다음</a>
+                <c:choose>
+                <c:when test="${not empty searchWord}">
+                	<a href="<%=request.getContextPath()%>/list?currentPage=${endPageNum+1}&searchWord=${searchWord}">다음</a>
+                </c:when>
+                <c:otherwise>
+                	<a href="<%=request.getContextPath()%>/list?currentPage=${endPageNum+1}">다음</a>
+                </c:otherwise>
+                </c:choose>
                 </c:if>
            		</div>
             <div class="write"><a href="<%=request.getContextPath()%>/write">작성</a></div>
