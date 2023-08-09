@@ -39,6 +39,8 @@
         border: 1px solid black;
     }
     table{
+    	position: relative;
+    	bottom:40px;
         margin: 20px auto;
     }
     .col1{
@@ -55,9 +57,9 @@
         height: 270px;
         width: 494px
     }
-    #write{
+    .write{
         position: relative;
-        top: 57px;
+        top: 414px;
         left: 720px;
         background-color: gray;
         border: none;
@@ -113,22 +115,39 @@
     <div class="title">
         <p>커뮤니티 사이트</p>
     </div>
-    <form action="<%=request.getContextPath()%>/write.do" method="get">
+        <c:choose>
+        <c:when test="${empty idx}">
+        <form action="<%=request.getContextPath()%>/write.do" method="post">
         <table>
-            <tr>
+        	<tr>
                 <td class="col1">제목</td>
-                <td class="cols2"><input type="text" name="subject" <c:if test="${subject!=null}">value="${subject}"</c:if> required></td>
+                <td class="cols2"><input type="text" name="subject" value="${subject}" required></td>
             </tr>
             <tr>
                 <td class="col1">내용</td>
-                <td class="cols2"><textarea name=content required><c:if test="${content!=null}">${content}</c:if></textarea></td>
+                <td class="cols2"><textarea name=content required>${content}</textarea></td>
             </tr>
-        </table>
-        <c:if test="${not empty idx}">
-        <input type="hidden" name="idx" value="${idx}" >
-        </c:if>
-        <input type="submit" id="write" value="완료">
-    </form>
+            <input type="submit" class="write" value="완료">
+            </table>
+        </form>
+        </c:when>
+        <c:otherwise>
+        <form action="<%=request.getContextPath()%>/rewrite.do" method="post">
+        	<table>
+            <tr>
+                <td class="col1">제목</td>
+                <td class="cols2"><input type="text" name="subject" value="${subject}" required></td>
+            </tr>
+            <tr>
+                <td class="col1">내용</td>
+                <td class="cols2"><textarea name=content required>${content}</textarea></td>
+            </tr>
+            <input type="hidden" name="idx" value="${idx}">
+            <input type="submit" class="write" value="완료">
+            </table>
+        </form>
+        </c:otherwise>
+        </c:choose>
     <div>
         <a href="<%=request.getContextPath()%>/list" class="list">목록</a>
     </div>

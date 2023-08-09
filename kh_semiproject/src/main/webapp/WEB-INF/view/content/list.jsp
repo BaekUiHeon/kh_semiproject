@@ -128,9 +128,9 @@
         alert('로그인성공');
 		</script>
 		</c:if>
-		<c:if test="${writeSucessFail==1}">
+		<c:if test="${not empty writeSucessFail}">
 		<script>
-        alert('게시물작성이 완료되었습니다.');
+        alert("${writeSucessFail}");
 		</script>
 		</c:if>
         <div class="title">

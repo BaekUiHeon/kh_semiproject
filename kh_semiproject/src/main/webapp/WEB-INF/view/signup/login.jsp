@@ -94,9 +94,9 @@
 </head>
 <body>
     <body>
-	 <c:if test="${signupSuccessFail==2}">
+	 <c:if test="${not empty signupSuccessFail}">
 		<script>
-        alert('회원가입성공 로그인하세요.');
+        alert('${signupSuccessFail}');
 		</script>
 	</c:if>
    	<c:if test="${loginSucessFail==0}">

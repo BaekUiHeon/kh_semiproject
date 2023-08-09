@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("mid")==null) { //비로그인 상태라면 실행됨.
 		if(request.getSession().getAttribute("signupSuccessFail")!=null) {
-			request.setAttribute("signupSuccessFail",2);
+			request.setAttribute("signupSuccessFail","회원가입에 성공했습니다.");
 			request.getSession().removeAttribute("signupSuccessFail");
 		}
 		request.getRequestDispatcher("/WEB-INF/view/signup/login.jsp").forward(request, response);

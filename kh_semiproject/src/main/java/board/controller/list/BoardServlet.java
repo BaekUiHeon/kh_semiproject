@@ -55,13 +55,9 @@ public class BoardServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/list");
 		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

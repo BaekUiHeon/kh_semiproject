@@ -26,9 +26,6 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("logout")!=null){ //로그아웃 버튼이 눌렸다면 mid제거.
-			request.getSession().removeAttribute("mid");
-		}
 		request.getRequestDispatcher("/WEB-INF/view/main/main.jsp").forward(request, response); 
 	}
 	/**

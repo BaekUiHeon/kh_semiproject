@@ -154,7 +154,7 @@
         <nav>
             <a href="<%=request.getContextPath()%>/list">목록</a> 
             <c:if test="${mid == vo.id}"> 
-            <a href="<%=request.getContextPath()%>/write?idx=${vo.idx}&content=${vo.content}&subject=${vo.subject}">수정</a>
+            <a href="<%=request.getContextPath()%>/alter?idx=${vo.idx}&content=${vo.content}&subject=${vo.subject}">수정</a>
             </c:if>
             <a href="<%=request.getContextPath()%>/write">작성</a>
         </nav>

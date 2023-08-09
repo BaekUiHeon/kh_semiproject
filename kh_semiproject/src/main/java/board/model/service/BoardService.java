@@ -116,7 +116,7 @@ public class BoardService {
 		int totalCnt=dao.getSearchTotalCount(conn,searchWord);
 		list=dao.selectSearchList(conn,currentPage,pageSize,totalCnt,searchWord);
 		Map<String,Object> map=new HashMap<String,Object>();
-		map.put("totalcnt",totalCnt);
+		map.put("totalCnt",totalCnt);
 		map.put("list",list);
 		close(conn);
 		return map;
