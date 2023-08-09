@@ -89,9 +89,22 @@
         position: relative;
         left: 350px;
     }
+    .logout{
+     position:fixed;
+     top:40px;
+     left:920px;
+     background-color: gray;
+     color: black;
+    }
+
     </style>
 </head>
 <body>
+     <form action="<%=request.getContextPath()%>/logout" method="post">
+    <div class="logout">
+        <input type="submit" value="로그아웃">
+    </div>
+  </form>
 	<c:if test="${writeSucessFail==1}">
 		<script>
         alert('게시물작성이 실패하였습니다.');
