@@ -55,7 +55,7 @@
         height: 270px;
         width: 494px
     }
-    input[type=submit]{
+    #write{
         position: relative;
         top: 57px;
         left: 720px;
@@ -127,7 +127,7 @@
         <c:if test="${not empty idx}">
         <input type="hidden" name="idx" value="${idx}" >
         </c:if>
-        <input type="submit" value="완료">
+        <input type="submit" id="write" value="완료">
     </form>
     <div>
         <a href="<%=request.getContextPath()%>/list" class="list">목록</a>
