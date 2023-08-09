@@ -103,9 +103,9 @@
         alert('비밀번호가 다릅니다');
 	</script>
 	</c:if>
-	<c:if test="${signupSuccessFail==1}">
+	<c:if test="${not empty signupSuccessFail}">
 	<script>
-        alert('회원가입 실패');
+        alert('${signupSuccessFail}');
 	</script>
 	</c:if>
 	

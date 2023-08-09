@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("mid")==null) { //비로그인 상태라면 실행됨.
 		if(request.getSession().getAttribute("signupSuccessFail")!=null) {
-			request.setAttribute("signupSuccessFail","회원가입에 성공했습니다.");
+			request.setAttribute("signupSuccessFail",request.getSession().getAttribute("signupSuccessFail"));
 			request.getSession().removeAttribute("signupSuccessFail");
 		}
 		request.getRequestDispatcher("/WEB-INF/view/signup/login.jsp").forward(request, response);
@@ -51,11 +51,11 @@ public class LoginServlet extends HttpServlet {
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
 		String result = bs.login(id,password);
-		String signupSuccessFail=(String)request.getSession().getAttribute("signupSuccessFail");
-		if(signupSuccessFail!=null) { 
-			request.setAttribute("singupSuccessFail",1);
-			request.getSession().removeAttribute("signupSuccessFail");
-		}
+//		String signupSuccessFail=(String)request.getSession().getAttribute("signupSuccessFail"); 불필요한코드 이전에 작성한듯함.
+//		if(signupSuccessFail!=null) { 
+//			request.setAttribute("singupSuccessFail",1);
+//			request.getSession().removeAttribute("signupSuccessFail");
+//		}
 		if(result!=null) { 
 			if(password.equals(result)) {
 				System.out.println("로그인 성공");
