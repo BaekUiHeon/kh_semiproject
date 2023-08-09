@@ -6,6 +6,7 @@ bin/
 properties/
 *.properties
 Servers/
+Servers2/
 build/
 =======
 bin
