@@ -65,7 +65,22 @@
         position: absolute;
         font-weight: bold;
         bottom: 250px;
-        left: 470px;
+        left: 370px;
+        width: 80px;
+        font-size: 14px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        background-color: gray;
+        border:none;
+    }
+      .list a{
+        position: absolute;
+        color:black;
+        font-size: 14px;
+        font-weight: bold;
+        bottom: 250px;
+        left: 570px;
         width: 80px;
         height: 40px;
         text-align: center;
@@ -92,6 +107,9 @@
         <input type="submit" value="로그아웃">
     </div>
     </form>
+    <div class="list">
+    	<a href="<%=request.getContextPath()%>/list">게시판으로</a>
+    </div>
     </c:if>
     <div class="footer">
         <p>copyright (c) 백의헌 게시판만들기</p>

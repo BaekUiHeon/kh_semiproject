@@ -73,7 +73,7 @@
     }
     .write{
         position: absolute;
-        bottom: 150px;
+        bottom: 140px;
         right: 120px;
         width: 80px;
         height: 40px;
@@ -103,9 +103,21 @@
     	bottom:80px;
     	left:400px;
     }
+    .logout{
+     position:fixed;
+     top:40px;
+     left:920px;
+     background-color: gray;
+     color: black;
+    }
 </style>
 </head>
 <body>
+    	 <form action="<%=request.getContextPath()%>/logout" method="post">
+    	<div class="logout">
+        <input type="submit" value="로그아웃">
+    	</div>
+  		</form>
 		<c:if test="${nullError==1}">
 		<script>
         alert('해당하는 게시물이 없습니다');
