@@ -93,15 +93,16 @@
     <div class="title">
         <p>커뮤니티 사이트</p>
     </div>
-    <c:if test="${empty mid}">
+    <c:choose>
+    <c:when test="${empty mid}">
     <div class="login">
         <a href="<%=request.getContextPath()%>/login">로그인</a>
     </div>
     <div class="signup">
         <a href="<%=request.getContextPath()%>/signup">회원가입</a>
     </div>
-    </c:if>
-    <c:if test="${not empty mid}">
+    </c:when>
+    <c:otherwise>
     <form action="<%=request.getContextPath()%>/logout" method="post">
     <div class="logout">
         <input type="submit" value="로그아웃">
@@ -110,7 +111,8 @@
     <div class="list">
     	<a href="<%=request.getContextPath()%>/list">게시판으로</a>
     </div>
-    </c:if>
+    </c:otherwise>
+    </c:choose>
     <div class="footer">
         <p>copyright (c) 백의헌 게시판만들기</p>
     </div>

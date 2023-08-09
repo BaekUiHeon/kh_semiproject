@@ -116,7 +116,7 @@
     <div class="PassInfo"><p>10자이상 대소문자,숫자포함</p></div>
     <div class="signup">
         <h2>회원가입</h2>
-        <form action="<%=request.getContextPath()%>/signup" method="post"> <!--주소 입력해주어야함-->
+        <form action="<%=request.getContextPath()%>/signup" method="post">
             <table>
                 <tr>
                     <th>아이디</th>    
