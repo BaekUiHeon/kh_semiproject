@@ -137,7 +137,7 @@
             <p>커뮤니티 사이트</p>
         </div>
         <div class="list">
-        <div class="notice"><p>총 개의 게시물이 있습니다</p></div>
+        <div class="notice"><p>총 ${totalCnt}개의 게시물이 있습니다</p></div>
         <span class="search">
             <form action ="<%=request.getContextPath()%>/list" method="get">
                 <input type="search" name="searchWord">
@@ -152,7 +152,7 @@
                     <th class="col4">작성일</th>   
                 </tr>
                 <c:forEach items="${list}" var="item">
-               <tr> 
+               <tr>
                     <td><a href="<%=request.getContextPath()%>/board?idx=${item.idx}">${item.idx}</a></td>
                     <td>${item.writer}</td>
                     <td>${item.subject}</td>

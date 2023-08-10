@@ -303,13 +303,14 @@ public class BoardDao {
 		endRownum = ((currentPage*pageSize) > totalCnt) ? totalCnt: (currentPage*pageSize);
 		System.out.println("startRownum:"+startRownum);
 		System.out.println("endRownum:"+endRownum);
-		String query="select *from\r\n"
-				+ "(select tb1.*,rownum rn \r\n"
-				+ "from(\r\n"
-				+ "(select IDX,subject,content,to_char(WDATE,'yyyy-mm-dd') wdate,ID\r\n"
-				+ "from TBL_BOARD where subject like ? or content like ? order by IDX) Tb1))\r\n"
-				+ "where rn between ? and ?";	
+		String query="select * from \r\n"
+				+ " (select tb1.*,rownum rn \r\n"
+				+ " from(\r\n"
+				+ " (select IDX,subject,content,to_char(WDATE,'yyyy-mm-dd') wdate,ID\r\n"
+				+ " from TBL_BOARD where subject like ? or content like ? order by IDX) Tb1))\r\n"
+				+ " where rn between ? and ?";	
 		try {
+			searchWord="%"+searchWord+"%";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1,searchWord);
 			pstmt.setString(2,searchWord);
