@@ -86,7 +86,7 @@
     	 color: black;
     	 text-decoration: none;
     }
-    .main{
+    .mainlist{
         position: absolute;
         bottom: 80px;
         right: 120px;
@@ -99,7 +99,7 @@
         color: black;
         
     }
-    .main a{
+    .mainlist a{
     	 color: black;
     	 text-decoration: none;
     }
@@ -127,12 +127,30 @@
      background-color: gray;
      color: black;
     }
+    .main{
+    	position:fixed;
+    	left:920px;
+    	top:490px;
+    	width: 80px;
+    	height:40px;
+    	text-align: center;
+        line-height: 40px;
+        background-color: gray;
+    }
+    .main a{
+    	font-weight: bold;   
+    	color: black;
+        text-decoration:none;
+    }
 </style>
 </head>
 <body>
     	 <form action="<%=request.getContextPath()%>/logout" method="post">
     	<div class="logout">
         <input type="submit" value="로그아웃">
+    	</div>
+    	<div class="main">
+    	<a href="${pageContext.request.contextPath}/main">메인이동</a>
     	</div>
   		</form>
 		<c:if test="${empty list}">
@@ -212,7 +230,7 @@
                 </c:choose>
                 </c:if>
            		</div>
-           	<div class="main"><a href="${pageContext.request.contextPath}/list">전체목록</a></div>
+           	<div class="mainlist"><a href="${pageContext.request.contextPath}/list">전체목록</a></div>
             <div class="write"><a href="<%=request.getContextPath()%>/write">작성</a></div>
         </div>
         <div class="footer">
