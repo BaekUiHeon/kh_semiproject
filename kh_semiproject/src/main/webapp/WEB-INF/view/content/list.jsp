@@ -86,6 +86,23 @@
     	 color: black;
     	 text-decoration: none;
     }
+    .main{
+        position: absolute;
+        bottom: 80px;
+        right: 120px;
+        width: 80px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        background-color: gray;
+        font-weight: bold;   
+        color: black;
+        
+    }
+    .main a{
+    	 color: black;
+    	 text-decoration: none;
+    }
     td{
     font-size: 20px; 
     padding: 0;
@@ -118,7 +135,7 @@
         <input type="submit" value="로그아웃">
     	</div>
   		</form>
-		<c:if test="${nullError==1}">
+		<c:if test="${empty list}">
 		<script>
         alert('해당하는 게시물이 없습니다');
 		</script>
@@ -160,6 +177,7 @@
                 </tr>
                 </c:forEach>
     		</table>
+    		
                <div class="paging">
                 <c:if test="${startPageNum!=1}">  <%--페이징 이전,번호,다음에 대한 코드 --%>
                 <c:choose>
@@ -194,6 +212,7 @@
                 </c:choose>
                 </c:if>
            		</div>
+           	<div class="main"><a href="${pageContext.request.contextPath}/list">전체목록</a></div>
             <div class="write"><a href="<%=request.getContextPath()%>/write">작성</a></div>
         </div>
         <div class="footer">
