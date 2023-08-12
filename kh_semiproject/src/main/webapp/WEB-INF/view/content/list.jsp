@@ -130,7 +130,7 @@
     .main{
     	position:fixed;
     	left:920px;
-    	top:490px;
+    	top:489px;
     	width: 80px;
     	height:40px;
     	text-align: center;
