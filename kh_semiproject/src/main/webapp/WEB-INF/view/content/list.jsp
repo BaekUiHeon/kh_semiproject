@@ -210,12 +210,12 @@
                 <c:choose>
                 <c:when test="${not empty searchWord }">
                 <c:forEach begin="${startPageNum}" end="${endPageNum}" var="i"> 
-                <a href="<%=request.getContextPath()%>/list?currentPage=${i}&searchWord=${searchWord}"><span>${i} </span></a> <%--searchWord검사필요--%>
+                <a href="<%=request.getContextPath()%>/list?currentPage=${i}&searchWord=${searchWord}"><span>${i} </span></a> 
                 </c:forEach>
                 </c:when>
                 <c:otherwise>
                 <c:forEach begin="${startPageNum}" end="${endPageNum}" var="i"> 
-                <a href="<%=request.getContextPath()%>/list?currentPage=${i}"><span>${i} </span></a> <%--searchWord검사필요--%>
+                <a href="<%=request.getContextPath()%>/list?currentPage=${i}"><span>${i} </span></a> 
                 </c:forEach>
                 </c:otherwise>
                 </c:choose>

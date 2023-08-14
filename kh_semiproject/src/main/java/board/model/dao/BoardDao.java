@@ -257,7 +257,7 @@ public class BoardDao {
 		try {
 			pstmt=conn.prepareStatement(query);
 			rs=pstmt.executeQuery();
-			if(rs.next()==true)
+			if(rs.next())
 				result=rs.getInt("total_count");
 		}
 		catch(SQLException e) {
@@ -280,7 +280,7 @@ public class BoardDao {
 			pstmt.setString(1, searchWord1);
 			pstmt.setString(2, searchWord1);
 			rs=pstmt.executeQuery();
-			if(rs.next()==true)
+			if(rs.next())
 				result=rs.getInt("total_count");
 		}
 		catch(SQLException e) {
@@ -428,7 +428,7 @@ public class BoardDao {
 	public int insertComment(Connection conn,String idx, String content,String depth,String step, 
 											 String mid, String cidx) {
 		int result=-1;
-		String query="insert into tbl_comment (idx,content,ccidx,depth,step,id) values(?,?,?,?+1,?+1,?)"; //완성처리해야함.
+		String query="insert into tbl_comment (idx,content,ccidx,depth,step,id) values(?,?,?,?+1,?+1,?)"; 
 		PreparedStatement pstmt=null;
 		
 		try {

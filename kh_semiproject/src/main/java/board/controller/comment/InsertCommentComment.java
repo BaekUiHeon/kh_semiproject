@@ -1,4 +1,4 @@
-package board.controller.list;
+package board.controller.comment;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,25 +18,23 @@ import board.model.service.BoardService;
 import board.model.vo.CommentVo;
 
 /**
- * Servlet implementation class InsertCommentSevlet
+ * Servlet implementation class InsertCommentComment
  */
-@WebServlet("/insertcomment")
-public class InsertCommentServlet extends HttpServlet {
+@WebServlet("/insertCommentComment")
+public class InsertCommentComment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertCommentServlet() {
+    public InsertCommentComment() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("insertcomment doGet");
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("insertcommentconmment doget");
 		String idx= request.getParameter("idx");
 		String content= request.getParameter("comment");
 		String depth=request.getParameter("depth");
@@ -45,15 +43,11 @@ public class InsertCommentServlet extends HttpServlet {
 		String cidx=request.getParameter("cidx");
 		int result=-1;
 		BoardService bs= new BoardService();
-		System.out.println("idx번호:"+idx);
-		System.out.println("content:"+content);
-		if(cidx==null) {
-			System.out.println("참조댓글이 없을때 실행되는 commentinsert 서블릿 행동");
-			result=bs.insertComment(idx,content,mid);
-			if(result==1)
-				System.out.println("comment 입력완료.");
-			else if(result==-1)
-				System.out.println("comment 입력실패");
+		
+		result=bs.insertComment(idx,content,depth,step,mid,cidx);
+		
+		if(result==1) {
+			System.out.println("comment 입력완료.");
 			List<CommentVo> commentlist= bs.getComment(idx);
 			Map<String,Object> map=new HashMap<String,Object>();
 			map.put("commentlist",commentlist);
@@ -67,25 +61,7 @@ public class InsertCommentServlet extends HttpServlet {
 			System.out.println("commentlist 전송완료(from insertCommentServlet)");
 		}
 		
-		else {
-		result=bs.insertComment(idx,content,depth,step,mid,cidx);
-		
-		if(result==1)
-			System.out.println("comment 입력완료.");
 		else if(result==-1)
 			System.out.println("comment 입력실패");
-		
-		List<CommentVo> commentlist= bs.getComment(idx);
-		Map<String,Object> map=new HashMap<String,Object>();
-		map.put("commentlist",commentlist);
-		System.out.println("commentlist: "+commentlist);
-		Gson gson = new Gson();
-		
-		PrintWriter out = response.getWriter();
-		out.print(gson.toJson(map));
-		out.flush();
-		out.close();
-		System.out.println("commentlist 전송완료(from insertCommentServlet)");
-	    }
+	    }		
 	}
-}

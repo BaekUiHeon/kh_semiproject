@@ -166,8 +166,8 @@
         	function update_like(){
         	$.ajax({
         		url: "${pageContext.request.getContextPath()}/getlike",
-        		data:{idx:"${vo.idx}",mid:"${mid}"},
-        		type:"get",
+        		data:{idx:"${vo.idx}"},
+        		type:"POST",
         		success:getlike
         	});
         	}
@@ -182,7 +182,7 @@
         		$.ajax({
         			url:"${pageContext.request.contextPath}/insertcomment",
         			data:{comment:comment, idx:"${vo.idx}"},
-        			type:"get",
+        			type:"POST",
         			dataType:"Json",
         			success:getcomment
         		}
@@ -224,7 +224,7 @@
                 console.log("write_comment_comment 실행됨.");
                 console.log($(this).parent().prev().children().val());
                 $.ajax({
-                    url: "${pageContext.request.contextPath}/insertcomment",
+                    url: "${pageContext.request.contextPath}/insertCommentComment",
                     data: {
                         cidx: $(this).parent().prev().prev().children("input[name=cidx]").val(),
                         idx: $(this).parent().prev().prev().children("input[name=idx]").val(),
@@ -232,7 +232,7 @@
                         depth: $(this).parent().prev().prev().children("input[name=depth]").val(),
                         comment: $(this).parent().prev().children().val()
                     },
-                    type: "get",
+                    type: "POST",
                     dataType: "json",
                     success: getcomment
                 });
@@ -246,7 +246,7 @@
        			$.ajax({
        				url:"${pageContext.request.contextPath}/deletecomment",
        				data:{cidx:cidx},	  
-       				type:'get',
+       				type:'POST',
        				success: function(data) {
        		            dodeletecomment(data, $location); 
        		        }

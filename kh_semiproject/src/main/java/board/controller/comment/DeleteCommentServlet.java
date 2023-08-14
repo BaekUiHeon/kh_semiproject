@@ -1,4 +1,4 @@
-package board.controller.list;
+package board.controller.comment;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import board.model.service.BoardService;
 import board.model.vo.CommentVo;
+import board.model.vo.WriterVo;
 
 /**
  * Servlet implementation class GetCommentServlet
@@ -29,11 +30,8 @@ public class DeleteCommentServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cidx=request.getParameter("cidx");
 		int result=0;
 		BoardService bs = new BoardService();

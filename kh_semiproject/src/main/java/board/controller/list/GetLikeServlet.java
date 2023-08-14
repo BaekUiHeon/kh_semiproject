@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
+import board.model.vo.WriterVo;
 
 /**
  * Servlet implementation class GetLikeServlet
@@ -26,12 +27,9 @@ public class GetLikeServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idx=request.getParameter("idx");
-		String mid=request.getParameter("mid");
+		String mid=(String)request.getSession().getAttribute("mid");
 		int countLike=-1;
 		BoardService bs=bs=new BoardService();
 		int result=bs.updateLike(mid,idx);
