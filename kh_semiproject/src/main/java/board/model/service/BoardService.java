@@ -56,10 +56,17 @@ public class BoardService {
 		conn=getConnection();
 		BoardDao dao=new BoardDao();
 		result=dao.checkLike(conn,mid,idx);
-		if(result==0)
+		if(result==0) {
 			result=dao.insertLike(conn,mid,idx);
+			if(result!=-1) {
+			result=dao.countLike(conn,idx);
+			}
+		}
 		else if(result==1){
 			result=dao.deleteLike(conn,mid,idx);
+			if(result!=-1) {
+				result=dao.countLike(conn,idx);
+			}
 		}
 		close(conn);
 		return result;
