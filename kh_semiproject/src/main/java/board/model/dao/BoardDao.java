@@ -475,7 +475,7 @@ public class BoardDao {
 	
 	public List<CommentVo> getComment(Connection conn,String idx){ 
 		List<CommentVo> commentList=null;
-		String query="select idx,ccidx,depth,step,content,cidx,id,wdate,writer from ((select * from tbl_comment where idx=?) join tbl_writer using (id)) order by step asc,ccidx,step desc"; 
+		String query="select idx,ccidx,depth,step,content,cidx,id,wdate,writer from ((select * from tbl_comment where idx=?) join tbl_writer using (id)) order by step asc"; 
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		CommentVo vo=null;
