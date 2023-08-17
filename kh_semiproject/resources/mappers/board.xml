@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board">
+
+
+
+
+
+	<select id="getBoard" resultType="BoardVo" parameterType="string">
+		SELECT writer,idx,subject,content,to_char(wdate),id from (select * from tbl_board where idx={idx}) join tbl_writer using (id)
+	</select>
+	
+</mapper>
