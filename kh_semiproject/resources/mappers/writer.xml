@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="writer">
+	<select id="login" resultType="string" parameterType="string" >
+		select password from TBL_WRITER where id=#{id}
+	</select>
 
-
-
+	<insert id="signup" parameterType="WriterVo">
+		insert into tbl_writer values(#{id},#{writer},#{password},#{emailAddress})
+	</insert>
+	
+	<select id="checkId" resultType="_int">
+		select count(*) from tbl_writer where id=#{id}
+	</select>
 </mapper>

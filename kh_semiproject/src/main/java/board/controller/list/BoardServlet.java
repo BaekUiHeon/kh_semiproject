@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
 import board.model.vo.CommentVo;
-import board.model.vo.boardVo;
+import board.model.vo.BoardVo;
 
 /**
  * Servlet implementation class BoardServlet
@@ -41,7 +41,7 @@ public class BoardServlet extends HttpServlet {
 		request.setAttribute("countLike",countLike);
 		request.setAttribute("commentlist",commentList);
 		if(idx!=null) {
-		boardVo vo=bs.getBoard(idx);
+		BoardVo vo=bs.getBoard(idx);
 		if(vo!=null) {
 		request.setAttribute("vo", vo);
 		request.getRequestDispatcher("/WEB-INF/view/content/board.jsp").forward(request, response); //<추후 JSP작업 필요함.(vo 사용)>

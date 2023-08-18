@@ -2,7 +2,6 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 
-
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 		<setting name="mapUnderscoreToCamelCase" value="true" />
@@ -10,7 +9,7 @@
 
 
 	<typeAliases>
-		<typeAlias type="board.model.vo.boardVo" alias="BoardVo" />
+		<typeAlias type="board.model.vo.BoardVo" alias="BoardVo" />
 		<typeAlias type="board.model.vo.CommentVo" alias="CommentVo" />
 		<typeAlias type="board.model.vo.LikeVO" alias="LikeVO" />
 		<typeAlias type="board.model.vo.WriterVo" alias="WriterVo" />
@@ -30,7 +29,6 @@
 			</dataSource>
 		</environment>
 	</environments>
-
 
 	<mappers>
 		<mapper resource="mappers/board.xml" />

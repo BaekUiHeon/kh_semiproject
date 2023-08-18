@@ -32,7 +32,7 @@ public class CheckIdServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("아이디 체크를 위한 서블릿진입.");
-		int result=-1;
+		int result=0;
 		String id=request.getParameter("id");
 		System.out.println("id");
 		PrintWriter out = response.getWriter();

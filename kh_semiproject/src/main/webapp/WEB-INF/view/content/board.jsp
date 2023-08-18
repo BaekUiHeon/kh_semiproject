@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>게시글목록</title>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <style>

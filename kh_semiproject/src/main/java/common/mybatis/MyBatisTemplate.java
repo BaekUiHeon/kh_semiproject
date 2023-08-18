@@ -8,10 +8,22 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MyBatisTemplate {
-	public SqlSession getSession() {
-		SqlSession session = null;
+	public static SqlSession getSession(boolean a) {
+		SqlSession session=null;
 		try {
-			session= new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml")).openSession();
+			SqlSessionFactory factory= new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
+			session = factory.openSession(a);
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		return session;
+	}
+	public static SqlSession getSession() {
+		SqlSession session=null;
+		try {
+			SqlSessionFactory factory= new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
+			session = factory.openSession(true);
 		}
 		catch(IOException e) {
 			e.printStackTrace();

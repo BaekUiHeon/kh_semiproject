@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper>
-  <cache-ref namespace=""/>
+<mapper namespace="comment">
+
+	<delete id="delete">
+		delete from tbl_comment where cidx=#{cidx}
+	</delete>
+
+	<insert id="insert">
+		insert into tbl_comment (idx,content,step,id) values(#{idx},#{content},(select case when max(step) is null then 1 else max(step)+1 end as tbl from tbl_comment where idx=#{cidx}),#{mid})
+	</insert>
+	
+	<insert id="insertCoComment">
+		insert into tbl_comment (idx,content,ccidx,depth,step,id) values(#{idx},#{content},#{cidx},#{depth}+1,#{step}+1,#{mid})
+	</insert>
+	
+	<update id="updateComment">
+	update tbl_comment set step=step+1 where idx=#{idx} and step>#{step}
+	</update>
+	
+	<select id="getComment" resultType="CommentVo">
+		select idx,ccidx,depth,step,content,cidx,id,wdate,writer from ((select * from tbl_comment where idx=#{idx}) join tbl_writer using (id)) order by step asc
+	</select>
+
 </mapper>
+

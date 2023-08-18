@@ -2,12 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
 
-
-
-
+	<resultMap type="BoardVo" id="BoardVo1">
+		<id property="idx" column="idx"/>
+		<result property="subject" column="subject"/>
+		<result property="content" column="content"/>
+		<result property="wdate" column="wdate"/>
+		<result property="writer" column="writer"/>
+	</resultMap>
 
 	<select id="getBoard" resultType="BoardVo" parameterType="string">
-		SELECT writer,idx,subject,content,to_char(wdate),id from (select * from tbl_board where idx={idx}) join tbl_writer using (id)
+		select writer,idx,subject,content,to_char(wdate,'yyyy-mm-dd hh24:mi:ss') wdate,id 
+		from (select * from tbl_board where idx=#{aaa}) join tbl_writer using (id)
+	</select>
+	
+	<insert id="write">
+		insert into tbl_board (id,subject,content) values(#{mid},#{subject},#{content})
+	</insert>
+		
+	<update id="updateContent">
+		update tbl_board set content=#{content} where idx=#{idx}
+	</update>
+	
+	<select id="updateSubject" resultType="_int">
+		update tbl_board set subject=#{subject} where idx=#{idx}
+	</select>
+	
+	<select id="getList" resultMap="BoardVo1" parameterType="map">
+		select * from (select tb1.*,rownum rn from((select writer,IDX,subject,content,to_char(WDATE,'yyyy-mm-dd') wdate,ID from TBL_BOARD join TBL_writer using (id) order by IDX) Tb1)) where rn between #{startRownum} and #{endRownum}
+	</select>
+	
+	<select id="getTotalCount" resultType="_int">
+		select count(*) total_count from tbl_board
+	</select>
+	
+	<select id="getSearchTotalCount" resultType="_int" parameterType="string">
+		select count(*) total_count from tbl_board where content like #{searchWord1} or subject like #{searchWord1}
+	</select>
+	
+	<select id="getSearchList" resultType="BoardVo" parameterType="map">
+		select * from  (select tb1.*,rownum rn from((select IDX,subject,content,to_char(WDATE,'yyyy-mm-dd') wdate,ID from TBL_BOARD where subject like #{searchWord1} or content like #{searchWord1} order by IDX) Tb1)) where rn between #{startRownum} and #{endRownum}
 	</select>
 	
 </mapper>

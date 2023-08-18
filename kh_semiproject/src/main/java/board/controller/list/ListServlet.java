@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
-import board.model.vo.boardVo;
+import board.model.vo.BoardVo;
 
 /**
  * Servlet implementation class ListServlet
@@ -56,7 +56,7 @@ public class ListServlet extends HttpServlet {
 		BoardService bs=new BoardService();
 		if(searchWord==null) {
 			Map<String,Object> map = bs.selectList(currentPage,pageSize);
-			List<boardVo> list=(List<boardVo>)map.get("list");
+			List<BoardVo> list=(List<BoardVo>)map.get("list");
 			int totalCnt=(int)map.get("totalCnt");
 			int totalPageNum = totalCnt/pageSize + (totalCnt%pageSize == 0 ? 0 : 1);
 			int startPageNum = 1;
@@ -76,7 +76,7 @@ public class ListServlet extends HttpServlet {
 		}
 		else {
 		Map<String,Object> map = bs.selectSearchList(currentPage,pageSize,searchWord);
-		List<boardVo> list=(List<boardVo>)map.get("list");
+		List<BoardVo> list=(List<BoardVo>)map.get("list");
 		int totalCnt=(int)map.get("totalCnt");
 		int totalPageNum = totalCnt/pageSize + (totalCnt%pageSize == 0 ? 0 : 1);
 		int startPageNum = 1;

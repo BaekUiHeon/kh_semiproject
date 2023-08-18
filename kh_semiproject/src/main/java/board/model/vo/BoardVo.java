@@ -1,6 +1,6 @@
 package board.model.vo;
 
-public class boardVo {
+public class BoardVo {
 //	number	IDX	No	"SEMI"."IDX_SEQUENCE"."NEXTVAL"
 //	VARCHAR2(300 BYTE)	SUBJECT	No	
 //	VARCHAR2(4000 BYTE)	CONTENT	No	
@@ -14,11 +14,11 @@ public class boardVo {
     private String writer; //테이블에는 존재하지 않는 컬럼이나 join이 사용되는 함수에서 쓰기위해 추가함.
     
     
-	public boardVo() {
+	public BoardVo() {
 		super();
 	}
 
-	public boardVo(String idx, String subject, String content, String wdate, String id, String writer) {
+	public BoardVo(String idx, String subject, String content, String wdate, String id, String writer) {
 		super();
 		this.idx = idx;
 		this.subject = subject;
@@ -36,7 +36,7 @@ public class boardVo {
 		this.writer = writer;
 	}
 
-	public boardVo(String idx, String subject, String content, String wdate, String id) {
+	public BoardVo(String idx, String subject, String content, String wdate, String id) {
 		super();
 		this.idx = idx;
 		this.subject = subject;

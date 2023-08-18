@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>	
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>회원가입</title>
     <style>
       body{

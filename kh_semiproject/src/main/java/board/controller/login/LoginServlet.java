@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
-import board.model.vo.boardVo;
+import board.model.vo.BoardVo;
 
 /**
  * Servlet implementation class LoginServlet
@@ -50,12 +50,8 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("로그인 시도시작");
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
-		String result = bs.login(id,password);
-//		String signupSuccessFail=(String)request.getSession().getAttribute("signupSuccessFail"); 불필요한코드 이전에 작성한듯함.
-//		if(signupSuccessFail!=null) { 
-//			request.setAttribute("singupSuccessFail",1);
-//			request.getSession().removeAttribute("signupSuccessFail");
-//		}
+		String result = bs.login(id);
+		
 		if(result!=null) { 
 			if(password.equals(result)) {
 				System.out.println("로그인 성공");
