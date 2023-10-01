@@ -1,5 +1,4 @@
-https://docs.google.com/presentation/d/1P7YOORMSCaUKaXtFcVNwvq3gJ6x-nBc-/edit?usp=sharing&ouid=115344925934371612567&rtpof=true&sd=true  (도식화된 PPT)
-(12페이지 부터 도식화된 PPT와 설명이 있습니다.)
+https://docs.google.com/presentation/d/1P7YOORMSCaUKaXtFcVNwvq3gJ6x-nBc-/edit?usp=sharing&ouid=115344925934371612567&rtpof=true&sd=true  (도식화된 PPT 12페이지 부터 도식화된 PPT와 설명이 있습니다.)
 
 
 세미프로젝트는 디자인적인 요소를 배제하고
