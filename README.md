@@ -1,4 +1,4 @@
-세미 프로젝트는 화려함보다는 과정에서 학습하고 있는 MVC 패턴에 대한 이해와
+![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/60944483-9a2a-479c-9cb9-d9cebfa54cda)세미 프로젝트는 화려함보다는 과정에서 학습하고 있는 MVC 패턴에 대한 이해와
 페이징, 좋아요, 대 댓글 등의 기능을 한 줄 한 줄 이해하면서 구현하는 데 중점을 두었습니다.
 
 한 땀 한 땀 코드를 구현하면서 MVC 패턴에 대해 이해할 수 있었고,
@@ -12,7 +12,8 @@ Ajax를 포함한 자바스크립트를 많이 사용해 볼 수 있었습니다
 
 
 <페이징 알고리즘 도식화>
-![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/c0966504-2804-4616-8c89-fb0eee8670c8)
+![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/c64ef8f4-d369-4a03-b9b7-0c5942ac5c20)
+
 
 1. Controller
   1. 현재페이지 (default값 1)
