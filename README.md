@@ -44,11 +44,19 @@ Ajax를 포함한 자바스크립트를 많이 사용해 볼 수 있었습니다
 
 <대 댓글 적용 모습>
 ![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/833e6b46-b826-4e02-b529-8df420731b75)
+
+
 ![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/8a2d974d-5c40-4652-bd66-dee32301a2e9)
 
 대 댓글 기능은 모두 Ajax로 구현하였습니다.
 댓글 달기 클릭시 댓글을 작성할수 있는 <input>창이 생성되고 작성버튼을 클릭하면 Ajax로 작성한 댓글이 화면에 최신화 됩니다.
 삭제또한 Ajax를 통해 구현하였습니다.
+
+
+
+
+
+
 
 
 https://docs.google.com/presentation/d/1P7YOORMSCaUKaXtFcVNwvq3gJ6x-nBc-/edit?usp=sharing&ouid=115344925934371612567&rtpof=true&sd=true  (도식화된 PPT 12페이지 부터 도식화된 PPT와 설명이 있습니다.)
