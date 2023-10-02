@@ -36,14 +36,14 @@ Ajax를 포함한 자바스크립트를 많이 사용해 볼 수 있었습니다
 
 
 
-<좋아요 알고리즘 도식화>
+<Ajax 좋아요 알고리즘 도식화>
 ![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/775164e2-7271-496c-b9b4-29a67aa71f6d)
 
 
 
 
 
-<대 댓글 적용 모습>
+<Ajax로 구현한 대 댓글 적용 모습>
 ![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/833e6b46-b826-4e02-b529-8df420731b75)
 
 
