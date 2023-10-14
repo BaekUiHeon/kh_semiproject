@@ -61,7 +61,14 @@
 ### 2-1. Ajax 좋아요 알고리즘 도식화
 ![image](https://github.com/BaekUiHeon/kh_semiproject/assets/135290607/775164e2-7271-496c-b9b4-29a67aa71f6d)
 
-
+> `JSP`<br>
+1.JSP에서 좋아요 클릭
+  
+> `Controller,Service,Dao`
+  1. Controller -> Service -> Dao의 경로로 해당아이디와 게시물 번호를 전달
+  2. Dao를통해 데이터베이스에 해당 게시글번호와 ID로 `Insert`시도
+  3. 오류 발생시 중복된 값이 있다고 판단하고 `Delete`시도
+  4. 해당 게시글 좋아요수를 `Count`하여 최신화
 <br>
 
 ## 3. 대댓글
@@ -78,6 +85,90 @@
 2. 댓글 달기 클릭시 댓글을 작성할수 있는 `input`창이 생성되고 작성버튼을 클릭하면 `Ajax`로 작성한 댓글이 화면에 최신화 됩니다.<br>
 삭제또한 `Ajax`를 통해 구현하였습니다.
 <br>
+
+>
+           //대댓글 구현 코드(html)
+           <div>
+                <p>댓글</p>
+          </div>
+            <table>
+            <c:forEach items="${commentlist}" var="item">
+                <tr>
+                	<td>
+            		<c:forEach begin="1" end="${item.depth - 1}" varStatus="loop">
+            		&nbsp&nbsp
+        			</c:forEach>
+                    ${item.writer}: ${item.content } &nbsp&nbsp&nbsp  ${item.wdate }</td>
+                    <c:if test="${mid!=item.id}">
+                    <td><input type="button" class="writecomment" value="댓글달기">
+                    <input type="hidden" name="cidx" value="${item.cidx}">
+                    <input type="hidden" name="idx" value="${item.idx}">
+                    <input type="hidden" name="step" value="${item.step}">
+                    <input type="hidden" name="depth" value="${item.depth}">
+                    </td>
+                    </c:if>
+                    <c:if test="${mid==item.id}">
+                    <td><input type="button" class="deletecomment" value="삭제"><input type="hidden" name="cidx" value="${item.cidx}"></td><%--삭제의경우 삭제처리후 다시뜨게하기보다 성공여부에 따라 여기만 삭제--%>
+                    </c:if>
+                </tr>
+                </c:forEach>
+            </table>
+
+>        
+            //대댓글 작성버튼 클릭시 댓글 입력창 생성 코드
+          	$(document).on("click",".writecomment", writeboard);
+            function writeboard(){
+            	var html = $("<td><input type='text' class='comment_comment'></td>"+"<td><input type='button' class='writeboard' value='작성'></td>");
+            	$(".writeboard").parent().remove();
+            	$(".comment_comment").parent().remove();
+            	html.appendTo($(this).parent().parent());
+            }
+            
+            $(document).on("click", ".writeboard", write_comment_comment);
+            
+>
+            //대댓글 작성 실행코드 
+            function write_comment_comment() {
+                console.log("write_comment_comment 실행됨.");
+                console.log($(this).parent().prev().children().val());
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/insertCommentComment",
+                    data: {
+                        cidx: $(this).parent().prev().prev().children("input[name=cidx]").val(),
+                        idx: $(this).parent().prev().prev().children("input[name=idx]").val(),
+                        step: $(this).parent().prev().prev().children("input[name=step]").val(),
+                        depth: $(this).parent().prev().prev().children("input[name=depth]").val(),
+                        comment: $(this).parent().prev().children().val()
+                    },
+                    type: "POST",
+                    dataType: "json",
+                    success: getcomment
+                });
+            }
+
+>
+            //write_comment_comment 이후 댓글화면 최신화 ajax 코드
+          	function getcomment(data) {
+          	    var commentlist = data.commentlist;
+          	    var table = $("<table id='commentTable'></table>"); 
+          	    $.each(commentlist, function(index, item) {
+          	        var row = $("<tr></tr>");
+          	        var nb="";
+          	        for (var i = 0; i < item.depth; i++) {
+          	            nb+="&nbsp;&nbsp;";
+          	            } 
+          	      var td= $("<td>"+nb+ item.writer+ ": " + item.content + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + item.wdate+"</td>")
+          	        td.appendTo(row);
+          	        if ("${mid}" != item.id) {
+          	            $("<td><input type='button' value='댓글달기' class='writecomment'><input type='hidden' name='cidx'  value='"+item.cidx+"'><input type='hidden' name='idx'  value='"+item.idx+"'><input type='hidden' name='step'  value='"+item.step+"'><input type='hidden' name='depth'  value='"+item.depth+"'></td>").appendTo(row);
+          	        } else {
+          	            $("<td><input type='button' value='삭제' class='deletecomment'><input type='hidden' name='cidx' value='"+item.cidx+"'></td>").appendTo(row);
+          	        }
+          	        row.appendTo(table);
+          	    });
+          	    $("table").replaceWith(table);
+          	}   	 
+       		
 
 ## 프로젝트 소감
 - 한 땀 한 땀 코드를 구현하면서 `MVC 패턴`에 대해 이해할 수 있었고,
