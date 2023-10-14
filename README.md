@@ -54,7 +54,14 @@ Ajax를 포함한 자바스크립트를 많이 사용해 볼 수 있었습니다
 댓글 달기 클릭시 댓글을 작성할수 있는 <input>창이 생성되고 작성버튼을 클릭하면 Ajax로 작성한 댓글이 화면에 최신화 됩니다.
 삭제또한 Ajax를 통해 구현하였습니다.
 
+### Cache
 
+In relation to 1.x version, cache mechanism was improved. It's possible to work in 3 levels:
++ 0 - mechanism off,
++ 1 - information about child nodes are stored in memory. After moving or CUD operation, redownload information from data base is required,
++ 2 - as in 1 level with the difference that all operation on nodes are mapping in cache.
+
+There is possibility to force refesh data by pushing <kbd>Alt</kbd> in the moment of node expanding.
 
 
 
