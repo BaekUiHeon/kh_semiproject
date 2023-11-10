@@ -4,7 +4,7 @@
 
 ## 프로젝트 목표 
 - 세미 프로젝트는 화려함보다는 과정에서 학습하고 있는 MVC 패턴에 대한 이해와
-페이징, 좋아요, 대 댓글 등의 기능을<br> 한 줄 한 줄 이해하면서 구현하는 데 중점을 두었습니다.
+페이징, 좋아요, 대 댓글 등의 기능을 한 줄 한 줄 이해하면서 구현하는 데 중점을 두었습니다.
 <br>
 
 
@@ -22,6 +22,7 @@
 |IDE|Eclipse, VSCode, SQL Developer|
 |Server|Tomcat 9.0|
 |DateBase|Oracle(21c)|
+|Library|mybatis 3.5.1<br>ojdbc8<br>jstl 1.2<br>gson 2.8.5|
 <br>
 
 ## 프로젝트 기능 구현
